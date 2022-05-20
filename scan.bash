@@ -18,7 +18,7 @@ echo "
 sleep 2 
 command -v trivy > /dev/null 2>&1 || MISSING_PACKAGES+=("trivy")
 if [[ ! -z "$MISSING_PACKAGES" ]]; then
-  error "you need to install trivy!"
+  error "####you need to install trivy####!"
 fi
 info "ready to scan"
 #echo ""
@@ -48,7 +48,7 @@ done
 if ( $PULLERROR )
   then
     #echo ""
-    warn "######## ATTENTION: The script was not able to pull all images! Please check the output."
+    warn "####invalid image.chek your list####"
 fi
 sleep 2
 echo "
