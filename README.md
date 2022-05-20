@@ -1,1 +1,1 @@
-# trivy-scan
+# trivy scan
