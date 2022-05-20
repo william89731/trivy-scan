@@ -7,9 +7,48 @@
 
 [trivy](https://github.com/aquasecurity/trivy) is an opensource project for scanning  vulnerabilities in container images, file systems, and Git repositories
 
-# first you need:
+# first you need
 
 [os linux](https://www.linux.org/pages/download/)
 
 [docker](https://docs.docker.com/engine/install/)
+
+# get started
+
+open your terminal,and launch: 
+
+(install trivy with root user)
+
+curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.19.1
+
+(clone  repository)
+
+cd ~
+
+git clone https://github.com/william89731/trivy-scan
+
+chmod +X ~/trivy-scan/scan.bash
+
+(set alias)
+
+sudo nano ~/.bashrc
+
+(add this line) alias scan='~/trivy-scan/scan.bash ~/trivy-scan/images-list.txt'   (save and exit)
+
+(launch script)
+
+scan
+
+
+
+done.
+
+
+
+
+
+
+
+
+
 
