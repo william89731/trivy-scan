@@ -4,3 +4,12 @@
 [![license](https://img.shields.io/badge/license-Apache--2.0-yellowgreen)](https://apache.org/licenses/LICENSE-2.0)
 [![donate](https://img.shields.io/badge/donate-wango-blue)](https://www.wango.org/donate.aspx)
 # trivy scan
+
+[trivy](https://github.com/aquasecurity/trivy) is an opensource project for scanning  vulnerabilities in container images, file systems, and Git repositories
+
+# first you need:
+
+[os linux](https://www.linux.org/pages/download/)
+
+[docker](https://docs.docker.com/engine/install/)
+
