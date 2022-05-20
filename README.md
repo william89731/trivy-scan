@@ -23,11 +23,7 @@ curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/inst
 
 (clone  repository)
 
-cd ~
-
-git clone https://github.com/william89731/trivy-scan
-
-chmod +X ~/trivy-scan/scan.bash
+cd ~ && git clone https://github.com/william89731/trivy-scan && chmod +X ~/trivy-scan/scan.bash
 
 (set alias)
 
