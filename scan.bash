@@ -41,7 +41,7 @@ done
 
 if ( $PULLERROR )
   then
-    warn "####invalid image.chek your list####"
+    warn "check your list because there is an invalid image"
 fi
 sleep 2
 echo "
