@@ -37,6 +37,8 @@ source ~/.bashrc
 
 scan
 
+![Screencast-from-20-05-2022-23_16_07](https://user-images.githubusercontent.com/68069659/169612305-a9ff1a80-ae9e-47a0-be13-50efe92562ed.gif)
+
 
 
 
