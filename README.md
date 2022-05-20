@@ -35,13 +35,15 @@ sudo nano ~/.bashrc
 
 (add this line) alias scan='~/trivy-scan/scan.bash ~/trivy-scan/images-list.txt'   (save and exit)
 
+source ~/.bashrc
+
 (launch script)
 
 scan
 
 
 
-done.
+
 
 
 
