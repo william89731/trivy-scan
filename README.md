@@ -15,27 +15,36 @@
 
 # get started
 
-open your terminal,and launch: 
+### open your terminal 
 
-(install trivy with root user)
+install trivy with root user:
 
+```bash
 curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.19.1
+```
+clone  repository:
 
-(clone  repository)
-
+```bash
 cd ~ && git clone https://github.com/william89731/trivy-scan && chmod +X ~/trivy-scan/scan.bash
+```
+make your [images-list.txt](https://github.com/william89731/trivy-scan/blob/main/images-list.txt)
 
-(set alias)
+set alias:
 
+```bash
 sudo nano ~/.bashrc
+```
+(add this line:) ``` alias scan='~/trivy-scan/scan.bash ~/trivy-scan/images-list.txt' ```  (save and exit)
 
-(add this line) alias scan='~/trivy-scan/scan.bash ~/trivy-scan/images-list.txt'   (save and exit)
-
+```bash
 source ~/.bashrc
+```
 
-(launch script)
+launch script:
 
+```bash
 scan
+```
 
 ![Screencast-from-20-05-2022-23_16_07](https://user-images.githubusercontent.com/68069659/169612305-a9ff1a80-ae9e-47a0-be13-50efe92562ed.gif)
 
