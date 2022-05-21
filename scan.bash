@@ -22,16 +22,16 @@ if [[ ! -z "$MISSING_PACKAGES" ]]; then
 fi
 info "ready to scan"
 sleep 2
+truncate -s 0 ~/trivy-scan/report.txt 
+sleep 2
+set -o noclobber
 for i in $(cat $1); do
   info "Pull image"
   docker pull $i
   if [ $? == 0 ]
-    then
-      info "Show age"
-      docker image ls $i --format 'Image: {{.Repository}}:{{.Tag}} was created {{.CreatedSince}}'
-      
-      info "Scan image"
-      trivy $i
+    then 
+      docker image ls $i --format 'Image: {{.Repository}}:{{.Tag}} was created {{.CreatedSince}}' 
+      trivy image  $i >>  ~/trivy-scan/report.txt
     else
       PULLERROR=true
       warn "ERROR pull image"
@@ -44,6 +44,8 @@ if ( $PULLERROR )
     warn "check your list because there is an invalid image"
 fi
 sleep 2
+date  >>  ~/trivy-scan/report.txt
+
 echo "
  ██████╗  ██████╗  ██████╗ ██████╗ ██████╗ ██╗   ██╗███████╗
 ██╔════╝ ██╔═══██╗██╔═══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝██╔════╝
