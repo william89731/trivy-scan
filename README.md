@@ -47,7 +47,7 @@ scan
 
 ```see the scan result in the report.txt```
 
-![Screenshot from 2022-05-22 05-45-14](https://user-images.githubusercontent.com/68069659/169677510-98ded520-7738-4997-944c-910aa9d99033.png)
+![Screenshot from 2022-05-22 05-47-19](https://user-images.githubusercontent.com/68069659/169677557-1297453c-d3c2-43b2-b31f-8be551387dd2.png)
 
 
 # credits
