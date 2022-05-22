@@ -42,12 +42,14 @@ launch script:
 scan
 ```
 
-![Screencast-from-20-05-2022-23_16_07](https://user-images.githubusercontent.com/68069659/169612305-a9ff1a80-ae9e-47a0-be13-50efe92562ed.gif)
+![script](https://user-images.githubusercontent.com/68069659/169677210-5bfd94ef-386c-4a2c-aa4e-de102199c68d.gif)
 
 
 ```see the scan result in the report.txt```
 
+# credits
 
+thanks to @Ranzak of the group telegram [dockerlogy](https://t.me/dockerlogy) for the suggested using a docker image for trivy
 
 
 
