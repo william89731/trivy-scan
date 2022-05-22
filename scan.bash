@@ -1,9 +1,4 @@
 #!/bin/bash
-PULLERROR=false
-function info { echo -e "\e[32m[info] $*\e[39m"; }
-function warn  { echo -e "\e[33m[warn] $*\e[39m"; }
-function error { echo -e "\e[31m[error] $*\e[39m"; exit 1; }
-declare -a MISSING_PACKAGES
 
 echo "
 
@@ -14,43 +9,42 @@ echo "
    ██║   ██║  ██║██║ ╚████╔╝    ██║   
    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝     ╚═╝  
 "
+sleep 4
 
-sleep 2 
-command -v trivy > /dev/null 2>&1 || MISSING_PACKAGES+=("trivy")
-if [[ ! -z "$MISSING_PACKAGES" ]]; then
-  error "you need to install trivy!"
-fi
+function info { echo -e "\e[32m[info] $*\e[39m"; }
+function warn  { echo -e "\e[33m[warn] $*\e[39m"; }
+function error { echo -e "\e[31m[error] $*\e[39m"; exit 1; }
+declare -a MISSING_PACKAGES
+PULLERROR=false
+
 info "ready to scan"
-sleep 2
+sleep 3
 truncate -s 0 ~/trivy-scan/report.txt 
-sleep 2
 set -o noclobber
-for i in $(cat $1); do
-  info "Pull image"
-  docker pull $i
+for image in $(cat $1); do
+  echo ""
+  info "$image"
+  echo "scan.."
+  docker pull $image
   if [ $? == 0 ]
-    then 
-      docker image ls $i --format 'Image: {{.Repository}}:{{.Tag}} was created {{.CreatedSince}}' 
-      trivy image  $i >>  ~/trivy-scan/report.txt
+    then
+     # docker image ls $image --format 'Image: {{.Repository}}:{{.Tag}} was created {{.CreatedSince}}' >>  ~/trivy-scan/report.txt
+      echo "$image" >>  ~/trivy-scan/report.txt
+      docker image ls $image --format 'was created {{.CreatedSince}}' >>  ~/trivy-scan/report.txt
+      docker run --rm -v ~/trivy_database:/root/.cache/ aquasec/trivy  image  $image >>  ~/trivy-scan/report.txt
     else
       PULLERROR=true
-      warn "ERROR pull image"
-      info "-->next image"
+      warn "ERROR with pulling image"
+      echo ""
   fi
 done
 
 if ( $PULLERROR )
   then
-    warn "check your list because there is an invalid image"
+    warn "found invalid image.check your list"
 fi
-sleep 2
-date  >>  ~/trivy-scan/report.txt
+echo ""
+echo ""
+echo "see result in report.txt"
 
-echo "
- ██████╗  ██████╗  ██████╗ ██████╗ ██████╗ ██╗   ██╗███████╗
-██╔════╝ ██╔═══██╗██╔═══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝██╔════╝
-██║  ███╗██║   ██║██║   ██║██║  ██║██████╔╝ ╚████╔╝ █████╗  
-██║   ██║██║   ██║██║   ██║██║  ██║██╔══██╗  ╚██╔╝  ██╔══╝  
-╚██████╔╝╚██████╔╝╚██████╔╝██████╔╝██████╔╝   ██║   ███████╗
- ╚═════╝  ╚═════╝  ╚═════╝ ╚═════╝ ╚═════╝    ╚═╝   ╚══════╝
- "
+date  >>  ~/trivy-scan/report.txt
