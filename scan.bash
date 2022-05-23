@@ -14,18 +14,18 @@ sleep 4
 function info { echo -e "\e[32m[info] $*\e[39m"; }
 function warn  { echo -e "\e[33m[warn] $*\e[39m"; }
 function error { echo -e "\e[31m[error] $*\e[39m"; exit 1; }
-declare -a MISSING_PACKAGES
+
 PULLERROR=false
 
-info "ready to scan"
-sleep 3
+info "read images-list"
+sleep 2
 truncate -s 0 ~/trivy-scan/report.txt 
 set -o noclobber
 for image in $(cat $1); do
   echo ""
   info "$image"
   echo "scan.."
-  docker pull $image
+  #docker pull $image
   if [ $? == 0 ]
     then
      # docker image ls $image --format 'Image: {{.Repository}}:{{.Tag}} was created {{.CreatedSince}}' >>  ~/trivy-scan/report.txt
@@ -45,6 +45,6 @@ if ( $PULLERROR )
 fi
 echo ""
 echo ""
-echo "see result in report.txt"
+info "see result in report.txt"
 
 date  >>  ~/trivy-scan/report.txt
