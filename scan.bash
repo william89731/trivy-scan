@@ -29,9 +29,14 @@ for image in $(cat $1); do
   if [ $? == 0 ]
     then
      # docker image ls $image --format 'Image: {{.Repository}}:{{.Tag}} was created {{.CreatedSince}}' >>  ~/trivy-scan/report.txt
-      echo "$image" >>  ~/trivy-scan/report.txt
-      docker image ls $image --format 'was created {{.CreatedSince}}' >>  ~/trivy-scan/report.txt
-      docker run --rm -v ~/trivy_database:/root/.cache/ aquasec/trivy  image  $image >>  ~/trivy-scan/report.txt
+      docker pull $image
+      echo "" >>  ~/trivy-scan/report.txt
+      docker image ls $image --format '{{.Repository}}  was created {{.CreatedSince}}' >>  ~/trivy-scan/report.txt
+      docker run --rm -v ~/trivy_database:/root/.cache/ -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy  image --skip-dirs usr/ --skip-dirs helm $image >>  ~/trivy-scan/report.txt
+      echo "
+      #######################################################################################################################################################
+      #######################################################################################################################################################" >>  ~/trivy-scan/report.txt
+      
     else
       PULLERROR=true
       warn "ERROR with pulling image"

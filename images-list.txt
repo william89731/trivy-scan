@@ -1,6 +1,6 @@
 traefik:v2.7
 eclipse-mosquitto:2.0.14
-aquasec/trivy
+aquasec/trivy:latest
 
 
 
