@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo "
 
 ████████╗██████╗ ██╗██╗   ██╗██╗   ██╗
@@ -24,15 +23,14 @@ set -o noclobber
 for image in $(cat $1); do
   echo ""
   info "$image"
-  echo "scan.."
-  #docker pull $image
+  
+  docker pull $image
   if [ $? == 0 ]
     then
-     # docker image ls $image --format 'Image: {{.Repository}}:{{.Tag}} was created {{.CreatedSince}}' >>  ~/trivy-scan/report.txt
-      docker pull $image
       echo "" >>  ~/trivy-scan/report.txt
       docker image ls $image --format '{{.Repository}}  was created {{.CreatedSince}}' >>  ~/trivy-scan/report.txt
-      docker run --rm -v ~/trivy_database:/root/.cache/ -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy  image --skip-dirs usr/ --skip-dirs helm $image >>  ~/trivy-scan/report.txt
+      echo "scan.."
+      docker run --rm -v ~/trivy-scan/trivy_database:/root/.cache/ -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy  image --skip-dirs usr/ --skip-dirs helm $image >>  ~/trivy-scan/report.txt
       echo "
       #######################################################################################################################################################
       #######################################################################################################################################################" >>  ~/trivy-scan/report.txt
