@@ -8,12 +8,20 @@ echo "
    ██║   ██║  ██║██║ ╚████╔╝    ██║   
    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝     ╚═╝  
 "
-sleep 4
+sleep 2
+sleep 10 & PID=$! 
+echo "trivy is an opensource project for scanning vulnerabilities in container images, file systems, and Git repositories"
+printf "["
+while kill -0 $PID 2> /dev/null; do 
+    printf  "▓"
+    sleep 1
+done
+printf "] "
+printf "\n"
 
 function info { echo -e "\e[32m[info] $*\e[39m"; }
 function warn  { echo -e "\e[33m[warn] $*\e[39m"; }
 function error { echo -e "\e[31m[error] $*\e[39m"; exit 1; }
-
 PULLERROR=false
 
 info "read images-list"
