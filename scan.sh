@@ -8,7 +8,8 @@ echo "
    ██║   ██║  ██║██║ ╚████╔╝    ██║   
    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝     ╚═╝  
 "
-sleep 2
+sleep 4
+clear
 sleep 10 & PID=$! 
 echo "trivy is an opensource project for scanning vulnerabilities in container images, file systems, and Git repositories"
 printf "["
