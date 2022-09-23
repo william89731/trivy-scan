@@ -50,9 +50,7 @@ scan
 ![Screenshot from 2022-05-22 05-47-19](https://user-images.githubusercontent.com/68069659/169677557-1297453c-d3c2-43b2-b31f-8be551387dd2.png)
 
 
-# credits
 
-thanks to @Ranzak of the group telegram [dockerlogy](https://t.me/dockerlogy) for the suggested using a docker image for trivy
 
 
 
