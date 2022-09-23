@@ -21,7 +21,7 @@
 clone  repository:
 
 ```bash
-cd ~ && git clone https://github.com/william89731/trivy-scan 
+cd ~ && git clone https://github.com/william89731/trivy-scan && cd trivy-scan
 ```
 make your [images-list.txt](https://github.com/william89731/trivy-scan/blob/main/images-list.txt)
 
