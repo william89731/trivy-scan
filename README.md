@@ -21,7 +21,7 @@
 clone  repository:
 
 ```bash
-cd ~ && git clone https://github.com/william89731/trivy-scan && chmod +X ~/trivy-scan/scan.bash 
+cd ~ && git clone https://github.com/william89731/trivy-scan 
 ```
 make your [images-list.txt](https://github.com/william89731/trivy-scan/blob/main/images-list.txt)
 
@@ -30,7 +30,13 @@ set alias:
 ```bash
 sudo nano ~/.bashrc
 ```
-(add this line:) ``` alias scan='~/trivy-scan/scan.bash ~/trivy-scan/images-list.txt' ```  (save and exit)
+(add this line:) ``` alias scan='bash ~/trivy-scan/scan.sh ~/trivy-scan/images-list.txt' ```   
+
+save and exit:
+
+```ctrl+s  ctrl+x```
+
+reload:  
 
 ```bash
 source ~/.bashrc
