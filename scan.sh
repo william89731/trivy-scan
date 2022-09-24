@@ -9,9 +9,10 @@ echo "
    ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝     ╚═╝  
 "
 sleep 4
-clear
+
 sleep 10 & PID=$! 
 echo "trivy is an opensource project for scanning vulnerabilities in container images, file systems, and Git repositories"
+
 printf "["
 while kill -0 $PID 2> /dev/null; do 
     printf  "▓"
@@ -20,13 +21,14 @@ done
 printf "] "
 printf "\n"
 
+clear
 function info { echo -e "\e[32m[info] $*\e[39m"; }
 function warn  { echo -e "\e[33m[warn] $*\e[39m"; }
 function error { echo -e "\e[31m[error] $*\e[39m"; exit 1; }
 PULLERROR=false
 
 info "read images-list"
-sleep 2
+
 truncate -s 0 ~/trivy-scan/report.txt 
 set -o noclobber
 for image in $(cat $1); do
@@ -39,10 +41,18 @@ for image in $(cat $1); do
       echo "" >>  ~/trivy-scan/report.txt
       docker image ls $image --format '{{.Repository}}  was created {{.CreatedSince}}' >>  ~/trivy-scan/report.txt
       echo "scan.."
-      docker run --rm -v ~/trivy-scan/trivy_database:/root/.cache/ -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy  image --skip-dirs usr/ --skip-dirs helm $image >>  ~/trivy-scan/report.txt
+      docker run --rm -v ~/trivy-scan/trivy_database:/root/.cache/ -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy  image --skip-dirs usr/ --skip-dirs helm --security-checks vuln $image >>  ~/trivy-scan/report.txt
       echo "
-      #######################################################################################################################################################
-      #######################################################################################################################################################" >>  ~/trivy-scan/report.txt
+>
+>
+>
+>
+>
+>
+>
+>
+    " >>  ~/trivy-scan/report.txt
+    
       
     else
       PULLERROR=true
