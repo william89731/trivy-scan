@@ -3,46 +3,30 @@
 [![script](https://img.shields.io/badge/script-bash-orange)](https://www.gnu.org/software/bash/)
 [![license](https://img.shields.io/badge/license-Apache--2.0-yellowgreen)](https://apache.org/licenses/LICENSE-2.0)
 [![donate](https://img.shields.io/badge/donate-wango-blue)](https://www.wango.org/donate.aspx)
-# trivy scan
+# Trivy Scan
 
 [trivy](https://github.com/aquasecurity/trivy) is an opensource project for scanning  vulnerabilities in container images, file systems, and Git repositories
 
-# first you need
+### first you need
 
 [os linux](https://www.linux.org/pages/download/)
 
 [docker](https://docs.docker.com/engine/install/)
 
-# get started
+### get started
 
-### open your terminal 
-
-
-clone  repository:
+- clone  repository:
 
 ```bash
 cd ~ && git clone https://github.com/william89731/trivy-scan && cd trivy-scan
 ```
-make your [images-list.txt](https://github.com/william89731/trivy-scan/blob/main/images-list.txt)
+- make your [images-list.txt](https://github.com/william89731/trivy-scan/blob/main/images-list.txt)
 
-set alias:
+- set alias:
 
-```bash
-sudo nano ~/.bashrc
-```
-(add this line:) ``` alias scan='bash ~/trivy-scan/scan.sh ~/trivy-scan/images-list.txt' ```   
+``` alias scan='bash ~/trivy-scan/scan.sh ~/trivy-scan/images-list.txt' ```   
 
-save and exit:
-
-```ctrl+s  ctrl+x```
-
-reload:  
-
-```bash
-source ~/.bashrc
-```
-
-launch script:
+- launch script:
 
 ```bash
 scan
