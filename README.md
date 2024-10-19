@@ -5,6 +5,8 @@
 [![donate](https://img.shields.io/badge/donate-wango-blue)](https://www.wango.org/donate.aspx)
 # Trivy Scan
 
+DEPRECATED in flavour to [docker tool](https://github.com/william89731/docker-tool)
+
 [trivy](https://github.com/aquasecurity/trivy) is an opensource project for scanning  vulnerabilities in container images, file systems, and Git repositories
 
 ### first you need
